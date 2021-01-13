@@ -1,7 +1,6 @@
-function DashBoard() {
-  const sdfksjd: number = 0;
-
+function DashBoard(props: object) {
+  console.log(props);
+  return <div>Helloo</div>;
 }
 
-
-export default DashBoard
+export default DashBoard;
