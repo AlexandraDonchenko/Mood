@@ -1,6 +1,12 @@
 function DashBoard(props: object) {
   console.log(props);
-  return <div>Helloo</div>;
+  return (
+    <div>
+      <div>
+        <h2>Welcome to the MOOD diary! </h2>
+      </div>
+    </div>
+  );
 }
 
 export default DashBoard;
