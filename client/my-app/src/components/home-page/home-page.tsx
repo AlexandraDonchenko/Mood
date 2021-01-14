@@ -1,4 +1,4 @@
-function homepage() {
-  return <div>WLCOME HOME USER</div>;
+function Homepage() {
+  return <div></div>;
 }
-export default homepage;
+export default Homepage;

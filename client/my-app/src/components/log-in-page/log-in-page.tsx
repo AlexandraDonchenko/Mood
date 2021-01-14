@@ -20,7 +20,12 @@ function LogIn(props: object) {
     return true;
   }
   return (
-    <form>
+    <form
+      onSubmit={async (event) => {
+        const handeled = await handleSubmit(event);
+        if (handeled === true) navigate('/homepage/1');
+      }}
+    >
       <label>
         EMAIL ADDRESS:
         <input type="text" name="Email" value={email} onChange={handleEmail} />
@@ -34,7 +39,14 @@ function LogIn(props: object) {
           onChange={handlePassword}
         />
       </label>
-      <button type="submit" value="Submit" onChange={handleSubmit}>
+      <button
+        type="submit"
+        value="Submit"
+        onChange={async (event) => {
+          const handeled = await handleSubmit(event);
+          if (handeled === true) navigate('/homepage/1');
+        }}
+      >
         Login
       </button>
     </form>
