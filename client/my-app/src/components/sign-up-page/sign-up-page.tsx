@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { navigate } from '@reach/router';
 
 function SignUP(props: object) {
@@ -7,7 +7,7 @@ function SignUP(props: object) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleFirstName(e: any) {
+  function handleFirstName(e: ChangeEvent<HTMLInputElement>) {
     setFirstName(e.target.value);
   }
   function handleLastName(e: any) {
@@ -36,7 +36,7 @@ function SignUP(props: object) {
       <form
         onSubmit={async (event) => {
           const handeled = await handleSubmit(event);
-          if (handeled === true) navigate('/');
+          if (handeled === true) navigate('/homepage/1');
         }}
       >
         <label>
