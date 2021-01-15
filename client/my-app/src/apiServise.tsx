@@ -5,8 +5,6 @@ const Obj = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:3001',
-        'Access-Control-Allow-Methods': 'POST',
       },
       body: JSON.stringify(content),
     });
