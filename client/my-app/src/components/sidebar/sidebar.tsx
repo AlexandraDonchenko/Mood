@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import Obj from './../../apiServise';
 //import Modal from './../modal./modal';
 interface Diary {
   diaryName: string;
   entries:
     | [
-        entrie: {
+        {
           date: Date;
           text: string;
         }
@@ -21,15 +22,29 @@ function Sidebar() {
   const toggle = function () {
     setModal(!modal);
   };
+  const createDiary = async function (name: string) {
+    const testEntry = await Obj.postEntrie({
+      diaryName: name,
+      entries: [
+        {
+          date: new Date(),
+          text: 'I really wish please was working',
+        },
+      ],
+    });
+    const data = testEntry;
+    return data;
+  };
   function handleName(e: any) {
     setJustName(e.target.value);
     setDiaryName({ diaryName: justName, entries: [] });
   }
-  function createDiary(e: React.FormEvent) {
+  function handleDiary(e: React.FormEvent) {
     e.preventDefault();
     const oldDiaries = diaries;
     if (diaryName !== undefined) {
       setDiaries([...oldDiaries, diaryName]);
+      console.log(createDiary(justName));
       setJustName('');
       toggle();
     }
@@ -41,12 +56,12 @@ function Sidebar() {
         <div>
           <div>
             <span>CHOOOSE NAME FOR YOUR DIARY</span>
-            <form onSubmit={createDiary}>
+            <form onSubmit={handleDiary}>
               <label>
                 NAME YOUR DIARY
                 <input type="text" value={justName} onChange={handleName} />
               </label>
-              <button type="submit" value="Submit" onSubmit={createDiary}>
+              <button type="submit" value="Submit" onSubmit={handleDiary}>
                 Create new Diary
               </button>
               <button onClick={toggle}> CLOSE</button>

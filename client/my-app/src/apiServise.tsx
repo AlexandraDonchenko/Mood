@@ -1,11 +1,13 @@
 const url: string = 'http://localhost:3000/';
 const Obj = {
   postEntrie: function (content: object) {
+    console.log(content);
     return fetchItems(`${url}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+
       body: JSON.stringify(content),
     });
   },

@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { navigate } from '@reach/router';
 
-function SignUP(props: object) {
+function SignUP() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');

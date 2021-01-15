@@ -6,10 +6,11 @@ export class DiaryController {
   constructor(private readonly diaryService: DiaryService) {}
   @Post()
   async addEntrie(
-    @Body('userId') userId: number,
-    @Body('entrie') entrie: Object,
+    @Body('diaryName') diaryName: string,
+    @Body('entries') entries: object[],
   ) {
-    const result = await this.diaryService.insertEntries(userId, entrie);
+    console.log(entries, 'I am inside ');
+    const result = await this.diaryService.insertEntries(diaryName, entries);
     return result;
   }
 }

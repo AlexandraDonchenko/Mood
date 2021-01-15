@@ -7,7 +7,7 @@ import { DiaryModule } from './DiaryEntries/diary.module';
 @Module({
   imports: [
     DiaryModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/diary'),
+    MongooseModule.forRoot('mongodb://localhost:27017/newDiary'),
   ],
   controllers: [AppController],
   providers: [AppService],
