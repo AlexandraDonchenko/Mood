@@ -30,14 +30,13 @@ function Sidebar() {
     const oldDiaries = diaries;
     if (diaryName !== undefined) {
       setDiaries([...oldDiaries, diaryName]);
+      setJustName('');
+      toggle();
     }
   }
-  console.log(diaries);
   return (
     <div>
       <button onClick={toggle}>CREATE NEW DIARY</button>
-
-      {console.log(modal)}
       {modal ? (
         <div>
           <div>
@@ -55,6 +54,11 @@ function Sidebar() {
           </div>
         </div>
       ) : null}
+      <div className="diaries">
+        {diaries.map((diary) => {
+          return <button key={diary.diaryName}>{diary.diaryName}</button>;
+        })}
+      </div>
     </div>
   );
 }
