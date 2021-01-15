@@ -25,6 +25,7 @@ function Sidebar() {
   const createDiary = async function (name: string) {
     const testEntry = await Obj.postEntrie({
       diaryName: name,
+      user: 1,
       entries: [
         {
           date: new Date(),

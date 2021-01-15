@@ -7,10 +7,15 @@ export class DiaryController {
   @Post()
   async addEntrie(
     @Body('diaryName') diaryName: string,
+    @Body('user') user: number,
     @Body('entries') entries: object[],
   ) {
     console.log(entries, 'I am inside ');
-    const result = await this.diaryService.insertEntries(diaryName, entries);
+    const result = await this.diaryService.insertEntries(
+      diaryName,
+      user,
+      entries,
+    );
     return result;
   }
 }

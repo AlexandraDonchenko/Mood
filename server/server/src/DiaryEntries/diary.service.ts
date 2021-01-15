@@ -11,9 +11,10 @@ export class DiaryService {
   constructor(
     @InjectModel('Diary') private readonly diaryModel: Model<Diary>,
   ) {}
-  async insertEntries(diaryName: string, entries: object[]) {
+  async insertEntries(diaryName: string, user: number, entries: object[]) {
     const newEntrie = new this.diaryModel({
       diaryName: diaryName,
+      user: user,
       entries: entries,
     });
     console.log(entries);
