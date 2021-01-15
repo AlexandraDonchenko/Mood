@@ -5,17 +5,29 @@ import DashBoard from './components/dashboard/dashboard';
 import LogIn from './components/log-in-page/log-in-page';
 import SignUP from './components/sign-up-page/sign-up-page';
 import Homepage from './components/home-page/home-page';
-let hi: string = 'hello';
+import Obj from './apiServise';
+
 const Dash = (props: RouteComponentProps) => <DashBoard />;
 const Login = (props: RouteComponentProps) => <LogIn />;
 const SignUp = (props: RouteComponentProps) => <SignUP />;
 const HomePage = (props: RouteComponentProps) => <Homepage />;
-const loggedIn = (item: object) => {};
+const testEntry = async function () {
+  const testEntry = await Obj.postEntrie({
+    userId: 1,
+    entrie: {
+      date: new Date(),
+      text: 'I really wish please was working',
+    },
+  });
+  return testEntry;
+};
+
 function App() {
   return (
     <div className="App">
       <header>
         <Link to="/">MOOOOOOOOOD</Link>
+        {console.log(testEntry())}
         <Link to="/sign-up">Sign up</Link>
         <Link to="/log-in">Log in</Link>
       </header>

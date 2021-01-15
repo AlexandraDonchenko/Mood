@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { navigate } from '@reach/router';
 
 function LogIn(props: object) {
