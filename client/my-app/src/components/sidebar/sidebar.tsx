@@ -1,51 +1,31 @@
 import { useState } from 'react';
-import Obj from './../../apiServise';
+import { Diary } from './../../types';
 //import Modal from './../modal./modal';
-interface Diary {
-  diaryName: string;
-  entries:
-    | [
-        {
-          date: Date;
-          text: string;
-        }
-      ]
-    | [];
+interface Props {
+  createDiary: (name: string) => Promise<any>;
 }
 
-function Sidebar() {
+const Sidebar: React.FC<Props> = ({ createDiary }) => {
   const [modal, setModal] = useState(false);
   const [diaries, setDiaries] = useState<Diary[]>([]);
-  const [justName, setJustName] = useState('');
+  const [justName, setJustName] = useState<string>('');
   const [diaryName, setDiaryName] = useState<Diary>();
   //const [toSubmit, setSubmit] = useState(false);
   const toggle = function () {
     setModal(!modal);
   };
-  const createDiary = async function (name: string) {
-    const testEntry = await Obj.postEntrie({
-      diaryName: name,
-      user: 1,
-      entries: [
-        {
-          date: new Date(),
-          text: 'I really wish please was working',
-        },
-      ],
-    });
-    const data = testEntry;
-    return data;
-  };
+
   function handleName(e: any) {
+    console.log('I am target', e.target.value);
     setJustName(e.target.value);
-    setDiaryName({ diaryName: justName, entries: [] });
+    setDiaryName({ diaryName: e.target.value, entries: [] });
   }
   function handleDiary(e: React.FormEvent) {
     e.preventDefault();
     const oldDiaries = diaries;
     if (diaryName !== undefined) {
       setDiaries([...oldDiaries, diaryName]);
-      console.log(createDiary(justName));
+      createDiary(justName);
       setJustName('');
       toggle();
     }
@@ -71,11 +51,12 @@ function Sidebar() {
         </div>
       ) : null}
       <div className="diaries">
+        {console.log(diaries)}
         {diaries.map((diary) => {
           return <button key={diary.diaryName}>{diary.diaryName}</button>;
         })}
       </div>
     </div>
   );
-}
+};
 export default Sidebar;
