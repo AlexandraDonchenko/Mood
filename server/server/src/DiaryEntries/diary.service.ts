@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Diary } from './diary.model';
+import { Diary, DiarySchema } from './diary.model';
 import deepai = require('deepai');
 deepai.setApiKey('35023bd6-3725-4e07-a82a-9c467eb97289');
 
@@ -17,7 +17,7 @@ export class DiaryService {
       user: user,
       entries: entries,
     });
-    console.log(entries);
+
     const result = await newEntrie.save();
 
     // const sentiment = (async function () {
@@ -30,5 +30,14 @@ export class DiaryService {
       text: result.entries,
       //sentiment: await sentiment,
     };
+  }
+  async getDiaries(id: number) {
+    console.log(id);
+    const result = await this.diaryModel.find({ user: id });
+    console.log(result);
+    return result;
+  }
+  async getEntries(diaryName: string) {
+    const result = await this.diaryModel.find({ diaryName: diaryName });
   }
 }

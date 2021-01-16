@@ -11,6 +11,9 @@ const createDiary = async function (name: string) {
   const data = testEntry;
   return data;
 };
+const getEntries = async function (diaryName: string) {
+  const arrayOfEntries = await Obj.getEntries(diaryName);
+};
 function Homepage() {
   return (
     <div className="homepage">

@@ -11,6 +11,15 @@ const Obj = {
       body: JSON.stringify(content),
     });
   },
+  getEntries: function (diaryName: string) {
+    return fetchItems(`${url}:diaryName`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(diaryName),
+    });
+  },
 };
 
 function fetchItems(url: string, options: any) {
