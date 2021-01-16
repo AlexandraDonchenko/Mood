@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { Diary } from './../../types';
-//import Modal from './../modal./modal';
+//import Modal from './../modal./modal'; // not using modal, to be deleted later
 interface Props {
   createDiary: (name: string) => Promise<any>;
+  // diaries: {
+  //   diaryName: string;
+  //   user: number;
+  //   entries: {
+  //     date: Date;
+  //     text: string;
+  //   }[];
+  // }[];
 }
 
 const Sidebar: React.FC<Props> = ({ createDiary }) => {
   const [modal, setModal] = useState(false);
   const [diaries, setDiaries] = useState<Diary[]>([]);
-  const [justName, setJustName] = useState<string>('');
+  const [justName, setJustName] = useState<string>(''); // creates just a name for diary
   const [diaryName, setDiaryName] = useState<Diary>();
-  //const [toSubmit, setSubmit] = useState(false);
   const toggle = function () {
     setModal(!modal);
   };
