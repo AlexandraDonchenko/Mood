@@ -1,16 +1,16 @@
 import Sidebar from './../sidebar/sidebar';
-import WelcomeUserPage from './../WelcomeUserPage/welcome-user-page';
 import './home-page.css';
 import Obj from './../../apiServise';
 import { Diary } from './../../types';
-import { useEffect, useState } from 'react';
+import UserPage from './../user-page/user-page';
+import React, { useEffect, useState } from 'react';
 
-const getEntries = async function (diaryName: string) {
-  const arrayOfEntries = await Obj.getEntries(diaryName);
-};
 function Homepage() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
   const [isLoaded, setLoaded] = useState<Boolean>(false);
+  const [arrayOfEntries, setArrayOfEntries] = useState<object[]>([]);
+
+  //----------------------------------------------------------------------------------------
   const createDiary = async function (name: string) {
     setLoaded(false);
     const oldDiaries = diaries;
@@ -22,6 +22,17 @@ function Homepage() {
     setDiaries([...oldDiaries, data]);
     setLoaded(true);
   };
+  const getEntries = function (diaryId: string) {
+    setLoaded(false);
+    const entries = diaries.filter((diary) => {
+      console.log(diaryId);
+      return diary._id === diaryId ? diary.entries : null;
+    });
+    setArrayOfEntries(entries);
+    setLoaded(true);
+    return entries;
+  };
+  //---------------------------------------------------------------------------------------
   useEffect(() => {
     Obj.getDiaries().then((diaries) => {
       setDiaries(diaries);
@@ -29,13 +40,18 @@ function Homepage() {
       if (isLoaded === true) console.log(diaries);
     });
   }, []);
+  //------------------------------------------------------------------------------------------------
   return (
     <div className="homepage">
       {isLoaded === true
         ? [
             <div>
-              <Sidebar createDiary={createDiary} diaries={diaries} />
-              <WelcomeUserPage />
+              <Sidebar
+                createDiary={createDiary}
+                getEntries={getEntries}
+                diaries={diaries}
+              />
+              <UserPage entries={arrayOfEntries} />
             </div>,
           ]
         : null}

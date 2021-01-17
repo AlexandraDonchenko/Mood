@@ -11,16 +11,10 @@ const Obj = {
       body: JSON.stringify(content),
     });
   },
-  getEntries: function (diaryName: string) {
-    const data = fetchItems(`${url}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(diaryName),
-    });
-    return data;
-  },
+  // getEntries: function (diaryId: string) {
+  //   const data = fetchItems(`${url}${diaryId}`);
+  //   return data;
+  // },
   getDiaries: function (id: number = 1) {
     return fetchItems(`${url}${id}`);
   },

@@ -1,5 +1,6 @@
 import { DiaryService } from './diary.service';
 import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Diary } from './diary.model';
 
 @Controller()
 export class DiaryController {
@@ -18,14 +19,14 @@ export class DiaryController {
     return result;
   }
   @Get(':id')
-  async getDiaries(@Param() params): Promise<any> {
+  async getDiaries(@Param() params): Promise<Diary[]> {
     console.log(params.id);
     const result = await this.diaryService.getDiaries(Number(params.id));
     return result;
   }
-  @Get('')
-  async getEntries(@Body('diaryName') diaryName: string) {
-    const result = await this.diaryService.getEntries(diaryName);
+  @Get(':diaryId')
+  async getEntries(@Param() params): Promise<Diary[]> {
+    const result = await this.diaryService.getEntries(String(params.id));
     return result;
   }
 }

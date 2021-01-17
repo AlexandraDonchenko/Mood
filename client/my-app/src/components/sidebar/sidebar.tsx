@@ -4,6 +4,7 @@ import { Diary } from './../../types';
 interface Props {
   createDiary: (name: string) => void;
   diaries: Diary[];
+  getEntries: (diaryName: string) => void;
   // diaries: {
   //   diaryName: string;
   //   user: number;
@@ -14,7 +15,7 @@ interface Props {
   // }[];
 }
 
-const Sidebar: React.FC<Props> = ({ createDiary, diaries }) => {
+const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
   const [modal, setModal] = useState(false);
   //const [diaries, setDiaries] = useState<Diary[]>([]);
   const [justName, setJustName] = useState<string>(''); // creates just a name for diary
@@ -22,10 +23,12 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries }) => {
   const toggle = function () {
     setModal(!modal);
   };
-  console.log('Diaries', diaries);
+
+  function handleDiaryButton(e: any) {
+    getEntries(e.target.value);
+  }
 
   function handleName(e: any) {
-    console.log('I am target', e.target.value);
     setJustName(e.target.value);
     setDiaryName({ diaryName: e.target.value, entries: [] });
   }
@@ -62,7 +65,15 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries }) => {
       <div className="diaries">
         {diaries.map((diary) => {
           console.log(diary._id);
-          return <button key={diary._id}>{diary.diaryName}</button>;
+          return (
+            <button
+              key={diary._id}
+              value={diary._id}
+              onClick={handleDiaryButton}
+            >
+              {diary.diaryName}
+            </button>
+          );
         })}
       </div>
     </div>

@@ -36,7 +36,8 @@ export class DiaryService {
     console.log('result', result);
     return result;
   }
-  async getEntries(diaryName: string) {
-    const result = await this.diaryModel.find({ diaryName: diaryName });
-  }
+  // async getEntries(diaryId: string) {
+  //   const result = await this.diaryModel.find({ _id: diaryId });
+  //   return result;
+  // }
 }
