@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Diary } from './../../types';
 //import Modal from './../modal./modal'; // not using modal, to be deleted later
 interface Props {
-  createDiary: (name: string) => Promise<any>;
+  createDiary: (name: string) => void;
+  diaries: Diary[];
   // diaries: {
   //   diaryName: string;
   //   user: number;
@@ -13,14 +14,15 @@ interface Props {
   // }[];
 }
 
-const Sidebar: React.FC<Props> = ({ createDiary }) => {
+const Sidebar: React.FC<Props> = ({ createDiary, diaries }) => {
   const [modal, setModal] = useState(false);
-  const [diaries, setDiaries] = useState<Diary[]>([]);
+  //const [diaries, setDiaries] = useState<Diary[]>([]);
   const [justName, setJustName] = useState<string>(''); // creates just a name for diary
   const [diaryName, setDiaryName] = useState<Diary>();
   const toggle = function () {
     setModal(!modal);
   };
+  console.log('Diaries', diaries);
 
   function handleName(e: any) {
     console.log('I am target', e.target.value);
@@ -29,10 +31,10 @@ const Sidebar: React.FC<Props> = ({ createDiary }) => {
   }
   function handleDiary(e: React.FormEvent) {
     e.preventDefault();
-    const oldDiaries = diaries;
+
     if (diaryName !== undefined) {
-      setDiaries([...oldDiaries, diaryName]);
       createDiary(justName);
+      console.log(diaries);
       setJustName('');
       toggle();
     }
@@ -58,9 +60,9 @@ const Sidebar: React.FC<Props> = ({ createDiary }) => {
         </div>
       ) : null}
       <div className="diaries">
-        {console.log(diaries)}
         {diaries.map((diary) => {
-          return <button key={diary.diaryName}>{diary.diaryName}</button>;
+          console.log(diary._id);
+          return <button key={diary._id}>{diary.diaryName}</button>;
         })}
       </div>
     </div>

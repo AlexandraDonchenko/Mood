@@ -12,17 +12,21 @@ const Obj = {
     });
   },
   getEntries: function (diaryName: string) {
-    return fetchItems(`${url}:diaryName`, {
+    const data = fetchItems(`${url}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(diaryName),
     });
+    return data;
+  },
+  getDiaries: function (id: number = 1) {
+    return fetchItems(`${url}${id}`);
   },
 };
 
-function fetchItems(url: string, options: any) {
+function fetchItems(url: string, options?: any) {
   return fetch(url, options)
     .then((res) => (res.status < 400 ? res : Promise.reject()))
     .then((res) => (res.status !== 204 ? res.json() : res))

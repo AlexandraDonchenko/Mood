@@ -30,7 +30,7 @@ const App: React.FC = () => {
         <Login path="log-in/*" />
         <SignUp path="sign-up/*" />
         <Dash path="/" />
-        <HomePage path="/homepage/:id" />
+        <HomePage path="/homepage/:1" />
       </Router>
     </div>
   );

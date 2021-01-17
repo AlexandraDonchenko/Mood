@@ -5,6 +5,7 @@
 //   createDiary: ;
 // };
 export interface Diary {
+  _id?: string;
   diaryName: string;
   entries:
     | [

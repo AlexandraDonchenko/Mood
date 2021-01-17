@@ -19,6 +19,7 @@ export class DiaryService {
     });
 
     const result = await newEntrie.save();
+    console.log('this is result', result);
 
     // const sentiment = (async function () {
     //   var resp = await deepai.callStandardApi('sentiment-analysis', {
@@ -26,15 +27,13 @@ export class DiaryService {
     //   });
     //   return resp;
     // })();
-    return {
-      text: result.entries,
-      //sentiment: await sentiment,
-    };
+    return result;
+    //sentiment: await sentiment,
   }
   async getDiaries(id: number) {
     console.log(id);
     const result = await this.diaryModel.find({ user: id });
-    console.log(result);
+    console.log('result', result);
     return result;
   }
   async getEntries(diaryName: string) {
