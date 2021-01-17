@@ -18,6 +18,16 @@ const Obj = {
   getDiaries: function (id: number = 1) {
     return fetchItems(`${url}${id}`);
   },
+  addEntry: function (content: { id: string; entries: object[] }) {
+    console.log(content);
+    fetchItems(`${url}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(content),
+    });
+  },
 };
 
 function fetchItems(url: string, options?: any) {

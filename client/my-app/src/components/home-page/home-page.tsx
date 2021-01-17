@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 function Homepage() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
   const [isLoaded, setLoaded] = useState<Boolean>(false);
-  const [arrayOfEntries, setArrayOfEntries] = useState<object[]>([]);
+  const [pickedDiary, setPickedDiary] = useState<Diary | undefined>();
 
   //----------------------------------------------------------------------------------------
   const createDiary = async function (name: string) {
@@ -22,15 +22,28 @@ function Homepage() {
     setDiaries([...oldDiaries, data]);
     setLoaded(true);
   };
+  const addEntry = async function (diaryId: string, text: string) {
+    setLoaded(false);
+    const oldEntries = [getEntries(diaryId).entries];
+    const date: Date = new Date();
+    const entry: {
+      date: Date;
+      text: string;
+    } = { date: date, text: text };
+    const entries = [...oldEntries, entry];
+
+    const diary = await Obj.addEntry({ id: diaryId, entries });
+    setLoaded(true);
+  };
   const getEntries = function (diaryId: string) {
     setLoaded(false);
-    const entries = diaries.filter((diary) => {
+    const diary = diaries.filter((diary) => {
       console.log(diaryId);
-      return diary._id === diaryId ? diary.entries : null;
+      return diary._id === diaryId;
     });
-    setArrayOfEntries(entries);
+    setPickedDiary(diary[0]);
     setLoaded(true);
-    return entries;
+    return diary;
   };
   //---------------------------------------------------------------------------------------
   useEffect(() => {
@@ -51,7 +64,7 @@ function Homepage() {
                 getEntries={getEntries}
                 diaries={diaries}
               />
-              <UserPage entries={arrayOfEntries} />
+              <UserPage diary={pickedDiary} />
             </div>,
           ]
         : null}
