@@ -6,6 +6,7 @@ export const DiarySchema = new mongoose.Schema({
     {
       date: Date,
       text: { type: String, lowercase: true, trim: true },
+      sentiment: [String],
     },
   ],
 });
@@ -16,6 +17,7 @@ export interface Diary extends mongoose.Document {
     {
       date: Date;
       text: string;
+      sentiment?: string[];
     },
   ];
 }

@@ -20,7 +20,6 @@ export class DiaryService {
     });
 
     const result = await newEntrie.save();
-    console.log('this is result', result);
 
     // const sentiment = (async function () {
     //   var resp = await deepai.callStandardApi('sentiment-analysis', {
@@ -31,13 +30,12 @@ export class DiaryService {
     return result;
     //sentiment: await sentiment,
   }
+
   async getDiaries(id: number) {
     const result = await this.diaryModel.find({ user: id });
-    console.log('result', result);
     return result;
   }
   async addEntry(id: string, entries: { date: Date; text: string }[]) {
-    //const dbId = mongoose.Types.ObjectId(id);
     const updatedEntries = await this.diaryModel.findByIdAndUpdate(
       { _id: id },
       { entries: entries },

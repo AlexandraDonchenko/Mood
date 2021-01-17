@@ -12,6 +12,7 @@ export interface Diary {
         {
           date: Date;
           text: string;
+          sentiment?: string[];
         }
       ]
     | [];
