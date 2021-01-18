@@ -17,7 +17,6 @@ const SentimentAnalysis: React.FC<Props> = ({ entries }) => {
     let number: number = 0;
     const senArr = entry.sentiment;
     senArr?.forEach((element) => {
-      console.log(element);
       number = number + convertToNum(element);
     });
     if (senArr) {

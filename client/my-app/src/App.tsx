@@ -5,7 +5,7 @@ import DashBoard from './components/dashboard/dashboard';
 import LogIn from './components/log-in-page/log-in-page';
 import SignUP from './components/sign-up-page/sign-up-page';
 import Homepage from './components/home-page/home-page';
-import Obj from './apiServise';
+import './App.css';
 const test: string = 'TEST'; // variable to try to pass down by props
 
 //const test: string = 'Hello';
@@ -17,14 +17,20 @@ const HomePage = (props: RouteComponentProps) => <Homepage />;
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header>
-        <Link to="/" state={{ hello: test }}>
-          MOOOOOOOOOD
-        </Link>
-
-        {/* {console.log(testEntry())} */}
-        <Link to="/sign-up">Sign up</Link>
-        <Link to="/log-in">Log in</Link>
+      <header className="header">
+        <div className="logo">
+          <Link to="/" className="text-link" state={{ hello: test }}>
+            MOOOOOOOOOD
+          </Link>
+        </div>
+        <div className="buttons">
+          <Link to="/sign-up" className="text-link">
+            Sign up
+          </Link>
+          <Link to="/log-in" className="text-link">
+            Log in
+          </Link>
+        </div>
       </header>
       <Router>
         <Login path="log-in/*" />
