@@ -19,7 +19,7 @@ const Obj = {
     return fetchItems(`${url}${id}`);
   },
   addEntry: function (content: { id: string; entries: object[] }) {
-    console.log(content);
+    console.log(content, 'this is content');
     fetchItems(`${url}`, {
       method: 'PATCH',
       headers: {

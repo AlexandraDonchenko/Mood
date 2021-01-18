@@ -46,8 +46,6 @@ export class DiaryController {
     const sentiment = await getSentiment();
     lastEntry.sentiment = sentiment;
     entries.push(lastEntry);
-    console.log('I am in');
-    console.log(entries);
     const result = await this.diaryService.addEntry(id, entries);
     return result;
   }

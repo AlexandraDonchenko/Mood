@@ -24,21 +24,21 @@ function Homepage() {
   };
   const addEntry = async function (diaryId: string, text: string) {
     setLoaded(false);
-    const oldEntries = [getEntries(diaryId).entries];
+    let oldEntries = diaries.filter((diary) => {
+      return diary._id === diaryId;
+    });
     const date: Date = new Date();
     const entry: {
       date: Date;
       text: string;
     } = { date: date, text: text };
-    const entries = [...oldEntries, entry];
-
-    const diary = await Obj.addEntry({ id: diaryId, entries });
+    const entries = [...oldEntries[0].entries, entry];
+    Obj.addEntry({ id: diaryId, entries });
     setLoaded(true);
   };
   const getEntries = function (diaryId: string) {
     setLoaded(false);
     const diary = diaries.filter((diary) => {
-      console.log(diaryId);
       return diary._id === diaryId;
     });
     setPickedDiary(diary[0]);
@@ -64,7 +64,7 @@ function Homepage() {
                 getEntries={getEntries}
                 diaries={diaries}
               />
-              <UserPage diary={pickedDiary} />
+              <UserPage diary={pickedDiary} addEntry={addEntry} />
             </div>,
           ]
         : null}
