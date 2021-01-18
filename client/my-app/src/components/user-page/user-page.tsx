@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import Moment from 'moment';
 import { Diary, Entry } from './../../types';
 import WelcomeUserPage from './../WelcomeUserPage/welcome-user-page';
+import SentimentAnalysis from './../sentiment-analysis/sentiment-analysis';
 interface Props {
   diary: Diary | undefined;
   addEntry: (diaryId: string, text: string) => void;
@@ -55,6 +56,7 @@ const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
           );
         })}
       </div>
+      <SentimentAnalysis entries={diary.entries}></SentimentAnalysis>
     </div>
   );
 };
