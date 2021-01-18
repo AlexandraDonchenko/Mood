@@ -25,10 +25,12 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
   };
 
   function handleDiaryButton(e: any) {
+    console.log(e.target.value);
     getEntries(e.target.value);
   }
 
   function handleName(e: any) {
+    console.log('I am target', e.target.value);
     setJustName(e.target.value);
     setDiaryName({ diaryName: e.target.value, entries: [] });
   }

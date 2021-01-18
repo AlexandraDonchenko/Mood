@@ -1,6 +1,6 @@
-import { FC, useState } from 'react';
-import { createDocumentRegistry } from 'typescript';
-import { Diary } from './../../types';
+import { FC, useState, useEffect } from 'react';
+import Moment from 'moment';
+import { Diary, Entry } from './../../types';
 import WelcomeUserPage from './../WelcomeUserPage/welcome-user-page';
 interface Props {
   diary: Diary | undefined;
@@ -8,11 +8,14 @@ interface Props {
 }
 
 const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
+  let entries: Entry[] = diary ? diary.entries : [];
+
   const [entryFieldClicked, setEntryField] = useState<Boolean>(false);
   const [diaryEntry, setDiaryEntry] = useState<string>('');
   function handleEntry(e: any) {
     setDiaryEntry(e.target.value);
   }
+
   function toggle() {
     setEntryField(!entryFieldClicked);
   }
@@ -37,11 +40,21 @@ const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
               <input type="text" value={diaryEntry} onChange={handleEntry} />
             </label>
             <button type="submit" value="Submit" onSubmit={handleSubmit}>
-              Create new Diary
+              Create new Entry
             </button>
           </form>
         </div>
       ) : null}
+      <div className="my-entries">
+        {entries.map((entry: any) => {
+          return (
+            <div>
+              <div>{Moment(entry.date).format('MMMM Do, YYYY')}</div>
+              <div>{entry.text}</div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

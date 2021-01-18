@@ -7,13 +7,11 @@
 export interface Diary {
   _id?: string;
   diaryName: string;
-  entries:
-    | [
-        {
-          date: Date;
-          text: string;
-          sentiment?: string[];
-        }
-      ]
-    | [];
+  entries: [Entry] | [];
+}
+export interface Entry {
+  _id?: string;
+  date: Date;
+  text: string;
+  sentiment?: string[];
 }

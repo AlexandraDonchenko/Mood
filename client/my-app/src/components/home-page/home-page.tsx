@@ -53,6 +53,14 @@ function Homepage() {
       if (isLoaded === true) console.log(diaries);
     });
   }, []);
+  useEffect(() => {
+    Obj.getDiaries().then((diaries) => {
+      setDiaries(diaries);
+      setLoaded(true);
+      if (isLoaded === true) console.log(diaries);
+    });
+  }, [isLoaded]);
+
   //------------------------------------------------------------------------------------------------
   return (
     <div className="homepage">
