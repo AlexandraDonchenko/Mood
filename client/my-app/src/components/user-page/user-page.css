@@ -24,14 +24,18 @@ input {
   padding: 1%;
   margin: 1%;
 }
-.form-box-for-user {
-  backdrop-filter: blur(10px);
+.form-box-for-user-a {
   background-color: #fef9c7;
   height: 100%;
-  width: 700px;
+  width: 100%;
   position: absolute;
   top: px;
   left: 350px;
+}
+.form-box-for-user-b {
+  background-color: #fef9c7;
+  height: 100%;
+  width: 100%;
 }
 .entry-box {
   width: 100%;
@@ -59,6 +63,8 @@ input {
   align-self: center;
 }
 .my-entries {
+  position: relative;
+  top: 75px;
   height: 400px;
   overflow: scroll;
 }

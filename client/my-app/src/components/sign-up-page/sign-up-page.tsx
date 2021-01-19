@@ -45,7 +45,7 @@ function SignUP() {
         >
           <div className="header">Sign up</div>
           <div className="input-container">
-            FIRST NAME:
+            <div className="request">FIRST NAME: </div>
             <input
               type="text"
               name="FirstName"
@@ -53,8 +53,8 @@ function SignUP() {
               onChange={handleFirstName}
             />
           </div>
-          LAST NAME:
           <div className="input-container">
+            <div className="request">LAST NAME:</div>
             <input
               type="text"
               name="LastName"
@@ -62,8 +62,8 @@ function SignUP() {
               onChange={handleLastName}
             />
           </div>
-          <span>EMAIL ADDRESS:</span>
           <div className="input-container">
+            <div className="request">EMAIL ADDRESS:</div>
             <input
               type="text"
               name="Email"
@@ -71,8 +71,8 @@ function SignUP() {
               onChange={handleEmail}
             />
           </div>
-          CHOOSE PASSWORD:
           <div className="input-container">
+            <div className="request">CHOOSE PASSWORD:</div>
             <input
               type="text"
               name="Password"

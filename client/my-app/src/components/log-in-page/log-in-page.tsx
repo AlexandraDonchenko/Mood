@@ -35,7 +35,7 @@ function LogIn(props: object) {
             }}
           >
             <div className="input-container">
-              <div>ENTER EMAIL ADDRESS:</div>
+              <div className="request">ENTER EMAIL ADDRESS:</div>
 
               <input
                 type="text"
@@ -45,7 +45,7 @@ function LogIn(props: object) {
               />
             </div>
             <div className="input-container">
-              <div>ENTER PASSWORD:</div>
+              <div className="request">ENTER PASSWORD:</div>
               <input
                 type="text"
                 name="Password"

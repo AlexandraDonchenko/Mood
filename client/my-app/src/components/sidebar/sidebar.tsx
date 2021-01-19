@@ -51,14 +51,26 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
       </button>
       {modal ? (
         <div className="pop-up">
-          <div className="form-box-for-user">
-            <span>CHOOOSE NAME FOR YOUR DIARY</span>
+          <div className="form-box-for-user-b">
+            <div className="request">CHOOOSE NAME FOR YOUR DIARY</div>
             <form className="diary-form" onSubmit={handleDiary}>
-              <input type="text" value={justName} onChange={handleName} />
-              <button type="submit" value="Submit" onSubmit={handleDiary}>
+              <textarea
+                className="create-diary-textarea"
+                value={justName}
+                onChange={handleName}
+              />
+              <button
+                className="smaller-redirect"
+                type="submit"
+                value="Submit"
+                onSubmit={handleDiary}
+              >
                 Create new Diary
               </button>
-              <button onClick={toggle}> CLOSE</button>
+              <button className="smaller-redirect" onClick={toggle}>
+                {' '}
+                CLOSE
+              </button>
             </form>
           </div>
         </div>

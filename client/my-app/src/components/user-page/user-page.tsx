@@ -62,20 +62,25 @@ const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
             </button>
           </form>
         </div>
-      ) : null}
-      <div className="my-entries">
-        {entries.map((entry: any) => {
-          return (
-            <div className="entry-box">
-              <div className="date">{Moment(entry.date).format('DD.MM')}</div>
-              <div className="diary-entry-text">
-                <div className="texti">{entry.text}</div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <SentimentAnalysis entries={diary.entries}></SentimentAnalysis>
+      ) : (
+        <div>
+          <SentimentAnalysis entries={diary.entries}></SentimentAnalysis>
+          <div className="my-entries">
+            {entries.map((entry: any) => {
+              return (
+                <div className="entry-box">
+                  <div className="date">
+                    {Moment(entry.date).format('DD.MM')}
+                  </div>
+                  <div className="diary-entry-text">
+                    <div className="texti">{entry.text}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

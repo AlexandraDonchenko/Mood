@@ -30,7 +30,8 @@
   margin-bottom: 15px;
 }
 .pop-up {
-  height: 100px;
+  height: 200px;
+  width: 400px;
   position: absolute;
   top: 40%;
   left: 40%;
