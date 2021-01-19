@@ -9,6 +9,7 @@ function Homepage() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
   const [isLoaded, setLoaded] = useState<Boolean>(false);
   const [pickedDiary, setPickedDiary] = useState<Diary | undefined>();
+  const [entryAdded, setEntryAdded] = useState<Boolean>(false);
 
   //----------------------------------------------------------------------------------------
   const createDiary = async function (name: string) {
@@ -22,6 +23,7 @@ function Homepage() {
     setDiaries([...oldDiaries, data]);
     setLoaded(true);
   };
+  //---------------------------------------------------------------------------------------------------------------------
   const addEntry = async function (diaryId: string, text: string) {
     setLoaded(false);
     let oldEntries = diaries.filter((diary) => {
@@ -33,19 +35,30 @@ function Homepage() {
       text: string;
     } = { date: date, text: text };
     const entries = [...oldEntries[0].entries, entry];
-    Obj.addEntry({ id: diaryId, entries });
-    setLoaded(true);
+    Obj.addEntry({ id: diaryId, entries }).then((diary) => {
+      Obj.getDiaries().then((diaries) => {
+        setDiaries(diaries);
+        setLoaded(true);
+        const diary = diaries.find((diary: Diary) => {
+          return diary._id === pickedDiary?._id;
+        });
+        setPickedDiary(diary);
+      });
+    });
   };
+  //---------------------------------------------------------------------------------------------------------------------
   const getEntries = function (diaryId: string) {
     setLoaded(false);
-    const diary = diaries.filter((diary) => {
+    const diary = diaries.find((diary) => {
       return diary._id === diaryId;
     });
-    setPickedDiary(diary[0]);
+    setPickedDiary(diary);
     setLoaded(true);
     return diary;
   };
+  console.log(diaries, 'HOME');
   //---------------------------------------------------------------------------------------
+
   useEffect(() => {
     Obj.getDiaries().then((diaries) => {
       setDiaries(diaries);
@@ -53,13 +66,15 @@ function Homepage() {
       if (isLoaded === true) console.log(diaries);
     });
   }, []);
-  useEffect(() => {
-    Obj.getDiaries().then((diaries) => {
-      setDiaries(diaries);
-      setLoaded(true);
-      if (isLoaded === true) console.log(diaries);
-    });
-  }, [isLoaded]);
+
+  // useEffect(() => {
+  //   Obj.getDiaries().then((diaries) => {
+  //     setDiaries(diaries);
+  //     setLoaded(true);
+  //     if (isLoaded === true) console.log(diaries);
+  //   });
+  //   setPickedDiary(pickedDiary);
+  // }, [diaries]);
 
   //------------------------------------------------------------------------------------------------
   return (
@@ -72,7 +87,9 @@ function Homepage() {
                 getEntries={getEntries}
                 diaries={diaries}
               />
-              <UserPage diary={pickedDiary} addEntry={addEntry} />
+              {pickedDiary !== undefined ? (
+                <UserPage diary={pickedDiary} addEntry={addEntry} />
+              ) : null}
             </div>,
           ]
         : null}

@@ -1,22 +1,25 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useMemo } from 'react';
 import Moment from 'moment';
 import { Diary, Entry } from './../../types';
 import WelcomeUserPage from './../WelcomeUserPage/welcome-user-page';
 import SentimentAnalysis from './../sentiment-analysis/sentiment-analysis';
 interface Props {
-  diary: Diary | undefined;
+  diary: Diary;
   addEntry: (diaryId: string, text: string) => void;
 }
 
 const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
-  let entries: Entry[] = diary ? diary.entries : [];
-
   const [entryFieldClicked, setEntryField] = useState<Boolean>(false);
   const [diaryEntry, setDiaryEntry] = useState<string>('');
+  const [entries, setEntries] = useState<Entry[]>(diary.entries);
   function handleEntry(e: any) {
     setDiaryEntry(e.target.value);
   }
-
+  useEffect(() => {
+    console.log('hello', diary);
+    setEntries(diary.entries);
+  }, [diary]);
+  console.log(diary, 'outside use');
   function toggle() {
     setEntryField(!entryFieldClicked);
   }

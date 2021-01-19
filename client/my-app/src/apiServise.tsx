@@ -18,9 +18,9 @@ const Obj = {
   getDiaries: function (id: number = 1) {
     return fetchItems(`${url}${id}`);
   },
-  addEntry: function (content: { id: string; entries: object[] }) {
+  addEntry: async function (content: { id: string; entries: object[] }) {
     console.log(content, 'this is content');
-    fetchItems(`${url}`, {
+    return fetchItems(`${url}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { navigate } from '@reach/router';
+import './log-in-page.css';
 
 function LogIn(props: object) {
   const [email, setEmail] = useState('');
@@ -20,36 +21,50 @@ function LogIn(props: object) {
     return true;
   }
   return (
-    <form
-      onSubmit={async (event) => {
-        const handeled = await handleSubmit(event);
-        if (handeled === true) navigate('/homepage/1');
-      }}
-    >
-      <label>
-        EMAIL ADDRESS:
-        <input type="text" name="Email" value={email} onChange={handleEmail} />
-      </label>
-      <label>
-        CHOOSE PASSWORD:
-        <input
-          type="text"
-          name="Password"
-          value={password}
-          onChange={handlePassword}
-        />
-      </label>
-      <button
-        type="submit"
-        value="Submit"
-        onChange={async (event) => {
+    <div className="form-box">
+      <form
+        className="form"
+        onSubmit={async (event) => {
           const handeled = await handleSubmit(event);
           if (handeled === true) navigate('/homepage/1');
         }}
       >
-        Login
-      </button>
-    </form>
+        <div className="input-container">
+          <label>
+            <div>EMAIL ADDRESS:</div>
+
+            <input
+              type="text"
+              name="Email"
+              value={email}
+              onChange={handleEmail}
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label>
+            <div>ENTER PASSWORD:</div>
+            <input
+              type="text"
+              name="Password"
+              value={password}
+              onChange={handlePassword}
+            />
+          </label>
+        </div>
+        <button
+          className="redirect"
+          type="submit"
+          value="Submit"
+          onChange={async (event) => {
+            const handeled = await handleSubmit(event);
+            if (handeled === true) navigate('/homepage/1');
+          }}
+        >
+          Login
+        </button>
+      </form>
+    </div>
   );
 }
 

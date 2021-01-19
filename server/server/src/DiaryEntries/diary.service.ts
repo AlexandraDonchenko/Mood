@@ -42,6 +42,7 @@ export class DiaryService {
       { new: true },
     );
     //const newEntries = [...oldEntries.entries, { date: date, text: text }];
+    console.log(updatedEntries);
     return updatedEntries;
   }
 }
