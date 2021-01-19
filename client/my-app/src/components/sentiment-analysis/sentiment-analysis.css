@@ -1,19 +1,36 @@
 .outerBox {
   display: flex;
+  height: 100%;
+  position: relative;
+  top: 70px;
+  flex-direction: column;
+}
+.inner-box {
+  display: flex;
 }
 
 .badDay {
   display: block;
+  text-align: center;
   background: rgb(235, 53, 53);
+  display: flex;
+  color: white;
   border-radius: 50%;
   height: 60px;
   width: 60px;
-  margin: 0;
+  margin: 2px;
 }
 .goodDay {
   background: rgb(9, 168, 62);
+  display: flex;
   border-radius: 50%;
+  text-align: center;
   height: 60px;
   width: 60px;
-  margin: 0;
+  color: white;
+}
+.date-in-bubble {
+  width: 100%;
+  text-align: center;
+  align-self: center;
 }

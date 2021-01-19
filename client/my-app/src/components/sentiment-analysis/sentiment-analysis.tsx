@@ -28,20 +28,26 @@ const SentimentAnalysis: React.FC<Props> = ({ entries }) => {
   });
   return (
     <div className="outerBox">
-      {sentiments.map((item) => {
-        return (
-          <div>
-            <div
-              className={
-                item !== null && item.sentriment > 0 ? 'goodDay' : 'badDay'
-              }
-            >
-              {Moment(item !== null ? item.date : null).format('MMMM Do, YYYY')}
+      <div className="last-analysis">
+        YOUR SENTIMENT ANALYSIS FOR LAST 14 DAYS
+      </div>
+      <div className="inner-box">
+        {sentiments.map((item) => {
+          return (
+            <div>
+              <div
+                className={
+                  item !== null && item.sentriment > 0 ? 'goodDay' : 'badDay'
+                }
+              >
+                <div className="date-in-bubble">
+                  {Moment(item !== null ? item.date : null).format('DD.MM ')}
+                </div>
+              </div>
             </div>
-          </div>
-        );
-      })}
-      <div></div>
+          );
+        })}
+      </div>
     </div>
   );
 };

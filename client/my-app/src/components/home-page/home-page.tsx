@@ -4,12 +4,13 @@ import Obj from './../../apiServise';
 import { Diary } from './../../types';
 import UserPage from './../user-page/user-page';
 import React, { useEffect, useState } from 'react';
+import WelcomeUserPage from '../WelcomeUserPage/welcome-user-page';
+import HeaderTwo from './../../header-two';
 
 function Homepage() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
   const [isLoaded, setLoaded] = useState<Boolean>(false);
   const [pickedDiary, setPickedDiary] = useState<Diary | undefined>();
-  const [entryAdded, setEntryAdded] = useState<Boolean>(false);
 
   //----------------------------------------------------------------------------------------
   const createDiary = async function (name: string) {
@@ -25,7 +26,6 @@ function Homepage() {
   };
   //---------------------------------------------------------------------------------------------------------------------
   const addEntry = async function (diaryId: string, text: string) {
-    setLoaded(false);
     let oldEntries = diaries.filter((diary) => {
       return diary._id === diaryId;
     });
@@ -35,18 +35,10 @@ function Homepage() {
       text: string;
     } = { date: date, text: text };
     const entries = [...oldEntries[0].entries, entry];
-    Obj.addEntry({ id: diaryId, entries }).then((diary) => {
-      Obj.getDiaries().then((diaries) => {
-        setDiaries(diaries);
-        setLoaded(true);
-        const diary = diaries.find((diary: Diary) => {
-          return diary._id === pickedDiary?._id;
-        });
-        setPickedDiary(diary);
-      });
-    });
+    const diary = await Obj.addEntry({ id: diaryId, entries });
+    setPickedDiary(diary);
   };
-  //---------------------------------------------------------------------------------------------------------------------
+
   const getEntries = function (diaryId: string) {
     setLoaded(false);
     const diary = diaries.find((diary) => {
@@ -67,29 +59,26 @@ function Homepage() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   Obj.getDiaries().then((diaries) => {
-  //     setDiaries(diaries);
-  //     setLoaded(true);
-  //     if (isLoaded === true) console.log(diaries);
-  //   });
-  //   setPickedDiary(pickedDiary);
-  // }, [diaries]);
-
   //------------------------------------------------------------------------------------------------
   return (
     <div className="homepage">
       {isLoaded === true
         ? [
             <div>
-              <Sidebar
-                createDiary={createDiary}
-                getEntries={getEntries}
-                diaries={diaries}
-              />
-              {pickedDiary !== undefined ? (
-                <UserPage diary={pickedDiary} addEntry={addEntry} />
-              ) : null}
+              {' '}
+              <HeaderTwo />
+              <div className="home-page-2">
+                <Sidebar
+                  createDiary={createDiary}
+                  getEntries={getEntries}
+                  diaries={diaries}
+                />
+                {pickedDiary !== undefined ? (
+                  <UserPage diary={pickedDiary} addEntry={addEntry} />
+                ) : (
+                  <WelcomeUserPage />
+                )}
+              </div>
             </div>,
           ]
         : null}

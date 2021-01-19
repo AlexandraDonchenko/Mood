@@ -17,21 +17,6 @@ const HomePage = (props: RouteComponentProps) => <Homepage />;
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="header">
-        <div className="logo">
-          <Link to="/" className="text-link" state={{ hello: test }}>
-            MOOOOOOOOOD
-          </Link>
-        </div>
-        <div className="buttons">
-          <Link to="/sign-up" className="text-link">
-            Sign up
-          </Link>
-          <Link to="/log-in" className="text-link">
-            Log in
-          </Link>
-        </div>
-      </header>
       <Router>
         <Login path="log-in/*" />
         <SignUp path="sign-up/*" />

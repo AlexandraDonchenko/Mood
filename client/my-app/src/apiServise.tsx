@@ -18,7 +18,7 @@ const Obj = {
   getDiaries: function (id: number = 1) {
     return fetchItems(`${url}${id}`);
   },
-  addEntry: async function (content: { id: string; entries: object[] }) {
+  addEntry: function (content: { id: string; entries: object[] }) {
     console.log(content, 'this is content');
     return fetchItems(`${url}`, {
       method: 'PATCH',

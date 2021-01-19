@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Diary } from './../../types';
-//import Modal from './../modal./modal'; // not using modal, to be deleted later
+import './sidebar.css';
 interface Props {
   createDiary: (name: string) => void;
   diaries: Diary[];
@@ -45,17 +45,16 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
     }
   }
   return (
-    <div>
-      <button onClick={toggle}>CREATE NEW DIARY</button>
+    <div className="sidebar">
+      <button className="diary-create-button" onClick={toggle}>
+        CREATE NEW DIARY
+      </button>
       {modal ? (
-        <div>
-          <div>
+        <div className="pop-up">
+          <div className="form-box-for-user">
             <span>CHOOOSE NAME FOR YOUR DIARY</span>
-            <form onSubmit={handleDiary}>
-              <label>
-                NAME YOUR DIARY
-                <input type="text" value={justName} onChange={handleName} />
-              </label>
+            <form className="diary-form" onSubmit={handleDiary}>
+              <input type="text" value={justName} onChange={handleName} />
               <button type="submit" value="Submit" onSubmit={handleDiary}>
                 Create new Diary
               </button>
@@ -66,9 +65,9 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
       ) : null}
       <div className="diaries">
         {diaries.map((diary) => {
-          console.log(diary._id);
           return (
             <button
+              className="diary-button"
               key={diary._id}
               value={diary._id}
               onClick={handleDiaryButton}

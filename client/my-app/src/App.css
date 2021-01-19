@@ -1,21 +1,26 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   background-color: #edeae5;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   font-family: 'Roboto', sans-serif;
+  overflow: hidden;
 }
 .header {
   display: flex;
   flex-direction: row;
   background-color: #026670;
-  width: 100vw;
-  height: 10vh;
+  width: 100%;
+  height: 75px;
   min-height: auto;
   color: #fce181;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .text-link {
   display: block;
+  padding: 10px;
   margin: 10px;
   align-self: center;
   font-size: 30px;
@@ -28,5 +33,21 @@
   align-self: center;
 }
 .logo {
+  display: flex;
+  flex-direction: row;
   align-self: center;
+}
+LogIn {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.header-two {
+  display: flex;
+  flex-direction: row;
+  background-color: #026670;
+  width: 100vw;
+  height: 75px;
+  min-height: auto;
+  color: #fce181;
+  justify-content: space-around;
 }
