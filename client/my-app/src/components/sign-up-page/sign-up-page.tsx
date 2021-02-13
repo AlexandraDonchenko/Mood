@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { navigate } from '@reach/router';
-import Header from '../../header';
+import Header from './../header /header';
 
 function SignUP() {
   const [firstName, setFirstName] = useState('');

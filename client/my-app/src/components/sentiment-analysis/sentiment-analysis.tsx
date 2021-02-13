@@ -37,7 +37,7 @@ const SentimentAnalysis: React.FC<Props> = ({ entries }) => {
             <div>
               <div
                 className={
-                  item !== null && item.sentriment > 0 ? 'goodDay' : 'badDay'
+                  item !== null && item.sentriment >= 0 ? 'goodDay' : 'badDay'
                 }
               >
                 <div className="date-in-bubble">

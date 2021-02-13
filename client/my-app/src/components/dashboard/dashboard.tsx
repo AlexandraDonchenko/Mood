@@ -1,6 +1,6 @@
 import './dashboard.css';
 import { navigate } from '@reach/router';
-import Header from '../../header';
+import Header from './../header /header';
 function DashBoard(props: object) {
   console.log(props);
   function handleClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

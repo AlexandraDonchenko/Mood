@@ -1,12 +1,10 @@
 import React from 'react';
-import './App.css';
-import { Router, Link, RouteComponentProps, Location } from '@reach/router';
+import { Router, RouteComponentProps } from '@reach/router';
 import DashBoard from './components/dashboard/dashboard';
 import LogIn from './components/log-in-page/log-in-page';
 import SignUP from './components/sign-up-page/sign-up-page';
 import Homepage from './components/home-page/home-page';
-import './App.css';
-const test: string = 'TEST'; // variable to try to pass down by props
+import './App.module.css';
 
 //const test: string = 'Hello';
 const Dash = (props: RouteComponentProps) => <DashBoard />;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { navigate } from '@reach/router';
-import Header from '../../header';
+import Header from './../header /header';
 import './log-in-page.css';
 
 function LogIn(props: object) {
