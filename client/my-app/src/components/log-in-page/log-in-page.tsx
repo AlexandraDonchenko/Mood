@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { navigate } from '@reach/router';
-import Header from './../header /header';
-import './log-in-page.css';
+import Header from '../header/header';
+import './log-in-page.module.css';
 
 function LogIn(props: object) {
   const [email, setEmail] = useState('');

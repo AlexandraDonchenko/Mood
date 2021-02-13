@@ -5,7 +5,6 @@ import { Diary } from './../../types';
 import UserPage from './../user-page/user-page';
 import React, { useEffect, useState } from 'react';
 import WelcomeUserPage from '../WelcomeUserPage/welcome-user-page';
-import HeaderTwo from './../header /header-two';
 
 function Homepage() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
@@ -66,7 +65,6 @@ function Homepage() {
         ? [
             <div>
               {' '}
-              <HeaderTwo />
               <div className="home-page-2">
                 <Sidebar
                   createDiary={createDiary}

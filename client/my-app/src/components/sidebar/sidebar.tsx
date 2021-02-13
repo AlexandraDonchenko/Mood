@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Diary } from './../../types';
-import './sidebar.css';
+import './sidebar.module.css';
 interface Props {
   createDiary: (name: string) => void;
   diaries: Diary[];

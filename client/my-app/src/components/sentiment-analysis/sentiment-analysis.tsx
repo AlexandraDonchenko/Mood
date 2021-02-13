@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import React from 'react';
 import { Entry } from './../../types';
-import './sentiment-analysis.css';
+import './sentiment-analysis.module.css';
 import Moment from 'moment';
 
 interface Props {
