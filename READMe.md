@@ -1,7 +1,16 @@
+<p align="center">
+<img align=center src="https://github.com/AlexandraDonchenko/Mood/blob/main/client/my-app/src/resources/Alwina%20Boutique%20(1).png">
+</p>
 
-<img src="https://github.com/AlexandraDonchenko/Mood/blob/main/client/my-app/src/resources/Alwina%20Boutique%20(1).png">
+## Mood is web application that allows users to: 
+<li> create diaries </li>
+<li> create entries </li>
+<li> recieve sentiment analysis of their entries </li>
+  
+### Tech stack 
 
-Mood is web aplication that allows users to: 
-<li> create diaries
-<li> create entries
-<li> recieve sentiment analysis of their entries  
+<li> React </li>
+<li> NestJs </li>
+<li> Mongoose </li>
+  
+### Getting started 
