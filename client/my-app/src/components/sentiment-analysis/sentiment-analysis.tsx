@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import React from 'react';
 import { Entry } from './../../types';
-import './sentiment-analysis.css';
+import './sentiment-analysis.module.css';
 import Moment from 'moment';
 
 interface Props {
@@ -37,7 +37,7 @@ const SentimentAnalysis: React.FC<Props> = ({ entries }) => {
             <div>
               <div
                 className={
-                  item !== null && item.sentriment > 0 ? 'goodDay' : 'badDay'
+                  item !== null && item.sentriment >= 0 ? 'goodDay' : 'badDay'
                 }
               >
                 <div className="date-in-bubble">

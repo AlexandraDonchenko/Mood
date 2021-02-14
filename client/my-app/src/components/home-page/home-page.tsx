@@ -1,11 +1,10 @@
 import Sidebar from './../sidebar/sidebar';
-import './home-page.css';
+import './home-page.module.css';
 import Obj from './../../apiServise';
 import { Diary } from './../../types';
 import UserPage from './../user-page/user-page';
 import React, { useEffect, useState } from 'react';
 import WelcomeUserPage from '../WelcomeUserPage/welcome-user-page';
-import HeaderTwo from './../../header-two';
 
 function Homepage() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
@@ -66,7 +65,6 @@ function Homepage() {
         ? [
             <div>
               {' '}
-              <HeaderTwo />
               <div className="home-page-2">
                 <Sidebar
                   createDiary={createDiary}

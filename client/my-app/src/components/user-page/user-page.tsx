@@ -3,8 +3,8 @@ import Moment from 'moment';
 import { Diary, Entry } from './../../types';
 import WelcomeUserPage from './../WelcomeUserPage/welcome-user-page';
 import SentimentAnalysis from './../sentiment-analysis/sentiment-analysis';
+import './user-page.module.css'
 
-import './user-page.css';
 interface Props {
   diary: Diary;
   addEntry: (diaryId: string, text: string) => void;

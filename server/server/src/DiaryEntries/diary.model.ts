@@ -1,11 +1,11 @@
 import * as mongoose from 'mongoose';
 export const DiarySchema = new mongoose.Schema({
-  diaryName: { type: String, lowercase: true, trim: true },
+  diaryName: { type: String },
   user: Number,
   entries: [
     {
       date: Date,
-      text: { type: String, lowercase: true, trim: true },
+      text: { type: String },
       sentiment: [String],
     },
   ],

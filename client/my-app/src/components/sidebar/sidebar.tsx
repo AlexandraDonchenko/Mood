@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Diary } from './../../types';
-import './sidebar.css';
+import './sidebar.module.css';
 interface Props {
   createDiary: (name: string) => void;
   diaries: Diary[];
@@ -55,7 +55,7 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
             <div className="request">CHOOOSE NAME FOR YOUR DIARY</div>
             <form className="diary-form" onSubmit={handleDiary}>
               <textarea
-                className="create-diary-textarea"
+                placeholder="Name your diary"
                 value={justName}
                 onChange={handleName}
               />
