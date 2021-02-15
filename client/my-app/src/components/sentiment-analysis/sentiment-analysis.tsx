@@ -3,6 +3,8 @@ import React from 'react';
 import { Entry } from './../../types';
 import './sentiment-analysis.module.css';
 import Moment from 'moment';
+import ApexCharts from 'react-apexcharts'
+
 
 interface Props {
   entries: Entry[];
@@ -22,31 +24,50 @@ const SentimentAnalysis: React.FC<Props> = ({ entries }) => {
     if (senArr) {
       return {
         date: entry.date,
-        sentriment: number / senArr.length,
+        sentiment: number / senArr.length,
       };
     } else return null;
   });
+  let goodDays = 0; 
+  let badDays = 0;
+  let neutralDays = 0;
+  if (sentiments!==null) {
+    sentiments.map(entry => {
+    if(entry && entry.sentiment === 0) neutralDays = neutralDays+1;
+    if(entry && entry.sentiment > 0) goodDays = goodDays+1;
+    if(entry && entry.sentiment < 0) badDays = badDays+1;
+    if(entry && entry.sentiment ===undefined )return null;
+  })}
+  const graph = {
+    series: [goodDays, badDays, neutralDays],
+    options: {
+      chart: {
+        type: 'donut',
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: '50px',
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    },
+
+
+};
+
+
   return (
     <div className="outerBox">
       <div className="last-analysis">
         YOUR SENTIMENT ANALYSIS FOR LAST 14 DAYS
       </div>
-      <div className="inner-box">
-        {sentiments.map((item) => {
-          return (
-            <div>
-              <div
-                className={
-                  item !== null && item.sentriment >= 0 ? 'goodDay' : 'badDay'
-                }
-              >
-                <div className="date-in-bubble">
-                  {Moment(item !== null ? item.date : null).format('DD.MM ')}
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      <div>
+      <ApexCharts height='200px' options={graph.options} series={graph.series} type="donut" />
       </div>
     </div>
   );
