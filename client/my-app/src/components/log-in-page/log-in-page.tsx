@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { navigate } from '@reach/router';
 import Header from '../header/header';
-import './log-in-page.module.css';
+import styles from './Log-in-page.module.css';
 
 function LogIn(props: object) {
   const [email, setEmail] = useState('');
@@ -22,20 +22,19 @@ function LogIn(props: object) {
     return true;
   }
   return (
-    <div className="main">
+    <div className={styles.main}>
       <Header />
-      <div className="container">
-        <div className="form-box">
-          <div className="header">LogIn</div>
-          <form
-            className="form"
+      <div className={styles.container}>
+        <div className={styles.form}>
+          <div className={styles.header}>LogIn</div>
+          <form className={styles.formcontainer}
             onSubmit={async (event) => {
               const handeled = await handleSubmit(event);
               if (handeled === true) navigate('/homepage/1');
             }}
           >
-            <div className="input-container">
-              <div className="request">ENTER EMAIL ADDRESS:</div>
+            <div className={styles.inputcontainer}>
+              <div className={styles.request}>ENTER EMAIL ADDRESS:</div>
 
               <input
                 type="text"
@@ -44,10 +43,10 @@ function LogIn(props: object) {
                 onChange={handleEmail}
               />
             </div>
-            <div className="input-container">
-              <div className="request">ENTER PASSWORD:</div>
+            <div className={styles.inputcontainer}>
+              <div className={styles.request}>ENTER PASSWORD:</div>
               <input
-                type="text"
+                type="password"
                 name="Password"
                 value={password}
                 onChange={handlePassword}

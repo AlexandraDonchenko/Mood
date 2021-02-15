@@ -1,7 +1,7 @@
 .sidebar {
   box-sizing: border-box;
   height: 100%;
-  background-color: #edeae5;
+  background-color: red;
   padding: 0px;
   width: 30%;
   display: flex;

@@ -1,23 +1,15 @@
 import { useState } from 'react';
 import { Diary } from './../../types';
-import './sidebar.module.css';
+import './Sidebar.module.css';
+import styles from './Sidebar.module.css'
 interface Props {
   createDiary: (name: string) => void;
   diaries: Diary[];
   getEntries: (diaryName: string) => void;
-  // diaries: {
-  //   diaryName: string;
-  //   user: number;
-  //   entries: {
-  //     date: Date;
-  //     text: string;
-  //   }[];
-  // }[];
 }
 
 const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
   const [modal, setModal] = useState(false);
-  //const [diaries, setDiaries] = useState<Diary[]>([]);
   const [justName, setJustName] = useState<string>(''); // creates just a name for diary
   const [diaryName, setDiaryName] = useState<Diary>();
   const toggle = function () {
@@ -45,29 +37,29 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
     }
   }
   return (
-    <div className="sidebar">
-      <button className="diary-create-button" onClick={toggle}>
+    <div className={styles.sidebar}>
+      <button className={styles.createDiary} onClick={toggle}>
         CREATE NEW DIARY
       </button>
       {modal ? (
-        <div className="pop-up">
-          <div className="form-box-for-user-b">
-            <div className="request">CHOOOSE NAME FOR YOUR DIARY</div>
-            <form className="diary-form" onSubmit={handleDiary}>
+        <div className={styles.popup}>
+          <div className={styles.formbox}>
+            <div className={styles.request}>CHOOOSE NAME FOR YOUR DIARY</div>
+            <form className={styles.form} onSubmit={handleDiary}>
               <textarea
                 placeholder="Name your diary"
                 value={justName}
                 onChange={handleName}
               />
               <button
-                className="smaller-redirect"
+                className={styles.redirect}
                 type="submit"
                 value="Submit"
                 onSubmit={handleDiary}
               >
                 Create new Diary
               </button>
-              <button className="smaller-redirect" onClick={toggle}>
+              <button className={styles.redirect} onClick={toggle}>
                 {' '}
                 CLOSE
               </button>
@@ -75,11 +67,11 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
           </div>
         </div>
       ) : null}
-      <div className="diaries">
+      <div className={styles.diaries}>
         {diaries.map((diary) => {
           return (
             <button
-              className="diary-button"
+              className={styles.diarybutton}
               key={diary._id}
               value={diary._id}
               onClick={handleDiaryButton}
