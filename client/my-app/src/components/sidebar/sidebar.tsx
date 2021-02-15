@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Diary } from './../../types';
 import './Sidebar.module.css';
 import styles from './Sidebar.module.css'
+import logo from './../../resources/logo-resized.png'
 interface Props {
   createDiary: (name: string) => void;
   diaries: Diary[];
@@ -31,13 +32,13 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
 
     if (diaryName !== undefined) {
       createDiary(justName);
-      console.log(diaries);
       setJustName('');
       toggle();
     }
   }
   return (
     <div className={styles.sidebar}>
+      <div className={styles.logo}><img src={logo} alt="logo"/></div>  
       <button className={styles.createDiary} onClick={toggle}>
         CREATE NEW DIARY
       </button>
@@ -46,11 +47,12 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
           <div className={styles.formbox}>
             <div className={styles.request}>CHOOOSE NAME FOR YOUR DIARY</div>
             <form className={styles.form} onSubmit={handleDiary}>
-              <textarea
+              <input
                 placeholder="Name your diary"
                 value={justName}
                 onChange={handleName}
               />
+              <div className= {styles.buttons}>
               <button
                 className={styles.redirect}
                 type="submit"
@@ -63,6 +65,7 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
                 {' '}
                 CLOSE
               </button>
+              </div>
             </form>
           </div>
         </div>
