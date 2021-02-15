@@ -12,5 +12,11 @@
 <li> React </li>
 <li> NestJs </li>
 <li> Mongoose </li>
+<li> Deep AI sentiment analysis </li> 
   
 ### Getting started 
+Clone repository and install of the needed dependencies by running "npm i" command. Also you will need MongoDB installed. Fill in the .env file with the correct credentials. 
+You will need to create create account with Deep AI and input your token. 
+
+To run server use command npm run. 
+To start use command npm start from client/my-app.
