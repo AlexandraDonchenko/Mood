@@ -25,7 +25,6 @@ export class DiaryController {
   }
   @Get(':id')
   async getDiaries(@Param() params): Promise<Diary[]> {
-    console.log(key);
     const result = await this.diaryService.getDiaries(Number(params.id));
     return result;
   }
