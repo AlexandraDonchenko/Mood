@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import React from 'react';
 import { Entry } from './../../types';
-import './sentiment-analysis.module.css';
 import Moment from 'moment';
 import ApexCharts from 'react-apexcharts'
+import styles from './Sentiment-analysis.module.css'
 
 
 interface Props {
@@ -41,6 +41,7 @@ const SentimentAnalysis: React.FC<Props> = ({ entries }) => {
   const graph = {
     series: [goodDays, badDays, neutralDays],
     options: {
+      labels: ['Good days', 'Bad days', 'Neutral days'],
       chart: {
         type: 'donut',
       },
@@ -63,11 +64,11 @@ const SentimentAnalysis: React.FC<Props> = ({ entries }) => {
 
   return (
     <div className="outerBox">
-      <div className="last-analysis">
+      <div className={styles.text}>
         YOUR SENTIMENT ANALYSIS FOR LAST 14 DAYS
       </div>
       <div>
-      <ApexCharts height='200px' options={graph.options} series={graph.series} type="donut" />
+      <ApexCharts height='200px'  options={graph.options} series={graph.series} type="donut" />
       </div>
     </div>
   );
