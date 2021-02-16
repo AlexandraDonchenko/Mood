@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { navigate } from '@reach/router';
 import Header from '../header/header';
-
+import styles from './Sign-up-page.module.css'
 function SignUP() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -28,24 +28,23 @@ function SignUP() {
       lastName: lastName,
       password: password,
     };
-    console.log(newUser);
-    return true;
+    return  true;
   }
 
   return (
-    <div className="main">
+    <div className={styles.main}>
       <Header />
-      <div className="container">
+      <div className={styles.container}>
         <form
-          className="form-box"
+          className={styles.form}
           onSubmit={async (event) => {
             const handeled = await handleSubmit(event);
             if (handeled === true) navigate('/homepage/1');
           }}
         >
-          <div className="header">Sign up</div>
-          <div className="input-container">
-            <div className="request">FIRST NAME: </div>
+          <div className={styles.header}>Sign up</div>
+          <div className={styles.inputcontainer}>
+            <div className={styles.request}>FIRST NAME: </div>
             <input
               type="text"
               name="FirstName"
@@ -53,8 +52,8 @@ function SignUP() {
               onChange={handleFirstName}
             />
           </div>
-          <div className="input-container">
-            <div className="request">LAST NAME:</div>
+          <div className={styles.inputcontainer}>
+            <div className={styles.request}>LAST NAME:</div>
             <input
               type="text"
               name="LastName"
@@ -62,8 +61,8 @@ function SignUP() {
               onChange={handleLastName}
             />
           </div>
-          <div className="input-container">
-            <div className="request">EMAIL ADDRESS:</div>
+          <div className={styles.inputcontainer}>
+            <div className={styles.request}>EMAIL ADDRESS:</div>
             <input
               type="text"
               name="Email"
@@ -71,10 +70,10 @@ function SignUP() {
               onChange={handleEmail}
             />
           </div>
-          <div className="input-container">
-            <div className="request">CHOOSE PASSWORD:</div>
+          <div className={styles.inputcontainer}>
+            <div className={styles.request}>CHOOSE PASSWORD:</div>
             <input
-              type="text"
+              type="password"
               name="Password"
               value={password}
               onChange={handlePassword}

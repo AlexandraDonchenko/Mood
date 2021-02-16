@@ -1,8 +1,11 @@
 import { DiaryService } from './diary.service';
 import { Controller, Post, Body, Get, Param, Put, Patch } from '@nestjs/common';
 import { Diary } from './diary.model';
+require('dotenv').config();
 import deepai = require('deepai');
-deepai.setApiKey('35023bd6-3725-4e07-a82a-9c467eb97289');
+
+const key = process.env.KEY;
+deepai.setApiKey(key);
 
 @Controller()
 export class DiaryController {

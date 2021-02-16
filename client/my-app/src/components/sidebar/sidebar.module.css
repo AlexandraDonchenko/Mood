@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .sidebar {
   box-sizing: border-box;
   height: 100%;
-  background-color: #edeae5;
+  background-color: white;
   padding: 0px;
   width: 30%;
   display: flex;
@@ -14,38 +16,101 @@
   flex-direction: column;
   justify-content: start;
 }
-.diary-button {
+.createDiary{
   align-self: center;
+  font-family: 'Montserrat', sans-serif;
   display: block;
   cursor: pointer;
   outline: none;
   border: none;
-  background-color: #026670;
+  background-color: #021c70;
   width: 200px;
   height: 100px;
   min-height: auto;
   font-size: 20px;
   font-weight: 600;
-  color: #fef9c7;
+  color: white;
   margin-bottom: 15px;
 }
-.pop-up {
-  height: 200px;
-  width: 400px;
+.popup {
+  height: 100vh;
+  width: 100vw;
   position: absolute;
-  top: 40%;
-  left: 40%;
+  z-index: 0;
+  backdrop-filter: blur(10px);
+
 }
-.diary-create-button {
+.logo {
+  margin-bottom: 40px;
+  margin-top: 20px;
+  background-color: white;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.logo img {
+  width: 100px;
   align-self: center;
+}
+.diarybutton {
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  background-color: #fef9c7;
+  border:none;
+  background-color: white;
+  margin-top: 15px;
+}
+.formbox {
+  background-color: white;
+  box-shadow: black 0px 5px 15px;  
+  display: flex;
+  width: 50%;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  flex-direction: column;
+  z-index: 10;
+}
+.form {
+  height: 20vh;
+  width:50%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 3;
+}
+.request {
+  align-self: center;
+  margin-top: 2%;
+  margin-bottom: -2%;
+  font-family: 'Montserrat', sans-serif;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+.buttons button {
+  background-color: #021c70;
+  width: 10vw;
+  color:white;
+  font-family: 'Montserrat', sans-serif;
+}
+input {
+	width: 100%;
+  align-self: center;
+	border-radius: 5px;
+	border: 1px solid #021c70;;
+	font-size: 20px;
+	padding: 5px 10px;
+	outline: none;
+  position: relative;
+  background-color: white;
   outline: none;
-  border: none;
-  color: #026670;
-  width: 200px;
-  height: 100px;
-  min-height: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.diarybutton:hover{
+  border-right: solid 2px  #021c70;
 }

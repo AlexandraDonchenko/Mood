@@ -3,7 +3,7 @@ import Moment from 'moment';
 import { Diary, Entry } from './../../types';
 import WelcomeUserPage from './../WelcomeUserPage/welcome-user-page';
 import SentimentAnalysis from './../sentiment-analysis/sentiment-analysis';
-import './user-page.module.css'
+import styles from'./User-page.module.css'
 
 interface Props {
   diary: Diary;
@@ -33,13 +33,9 @@ const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
   return diary === undefined ? (
     <WelcomeUserPage />
   ) : (
-    <div>
-      <div className="diaryName">{diary.diaryName}</div>
-      <div>
-        <button className="redirect" onClick={toggle}>
-          Create new entry for this diary!
-        </button>
-      </div>
+    <div className={styles.diaryBox}>
+      <div className={styles.diaryName}>{diary.diaryName}</div>
+
 
       {entryFieldClicked === true ? (
         <div className="form-box-for-user">
@@ -65,15 +61,15 @@ const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
       ) : (
         <div>
           <SentimentAnalysis entries={diary.entries}></SentimentAnalysis>
-          <div className="my-entries">
+          <div className={styles.myentries}>
             {entries.map((entry: any) => {
               return (
-                <div className="entry-box">
-                  <div className="date">
+                <div className={styles.entrybox}>
+                  <div className={styles.date}>
                     {Moment(entry.date).format('DD.MM')}
                   </div>
-                  <div className="diary-entry-text">
-                    <div className="texti">{entry.text}</div>
+                  <div className={styles.diaryentry}>
+                    <div className={styles.texti}>{entry.text}</div>
                   </div>
                 </div>
               );
@@ -81,6 +77,11 @@ const UserPage: React.FC<Props> = ({ diary, addEntry }) => {
           </div>
         </div>
       )}
+            <div>
+        <button className={styles.button}onClick={toggle}>
+          Create new entry for this diary!
+        </button>
+      </div>
     </div>
   );
 };

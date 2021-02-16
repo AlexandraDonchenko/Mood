@@ -1,10 +1,11 @@
 import Sidebar from './../sidebar/sidebar';
-import './home-page.module.css';
+
 import Obj from './../../apiServise';
 import { Diary } from './../../types';
 import UserPage from './../user-page/user-page';
 import React, { useEffect, useState } from 'react';
 import WelcomeUserPage from '../WelcomeUserPage/welcome-user-page';
+import styles from './Home-page.module.css'
 
 function Homepage() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
@@ -60,12 +61,12 @@ function Homepage() {
 
   //------------------------------------------------------------------------------------------------
   return (
-    <div className="homepage">
+    <div className={styles.wrapper}>
       {isLoaded === true
         ? [
             <div>
               {' '}
-              <div className="home-page-2">
+              <div className={styles.homepage}>
                 <Sidebar
                   createDiary={createDiary}
                   getEntries={getEntries}

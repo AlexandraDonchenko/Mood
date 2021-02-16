@@ -1,23 +1,16 @@
 import { useState } from 'react';
 import { Diary } from './../../types';
-import './sidebar.module.css';
+import './Sidebar.module.css';
+import styles from './Sidebar.module.css'
+import logo from './../../resources/logo-resized.png'
 interface Props {
   createDiary: (name: string) => void;
   diaries: Diary[];
   getEntries: (diaryName: string) => void;
-  // diaries: {
-  //   diaryName: string;
-  //   user: number;
-  //   entries: {
-  //     date: Date;
-  //     text: string;
-  //   }[];
-  // }[];
 }
 
 const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
   const [modal, setModal] = useState(false);
-  //const [diaries, setDiaries] = useState<Diary[]>([]);
   const [justName, setJustName] = useState<string>(''); // creates just a name for diary
   const [diaryName, setDiaryName] = useState<Diary>();
   const toggle = function () {
@@ -25,12 +18,10 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
   };
 
   function handleDiaryButton(e: any) {
-    console.log(e.target.value);
     getEntries(e.target.value);
   }
 
   function handleName(e: any) {
-    console.log('I am target', e.target.value);
     setJustName(e.target.value);
     setDiaryName({ diaryName: e.target.value, entries: [] });
   }
@@ -39,47 +30,49 @@ const Sidebar: React.FC<Props> = ({ createDiary, diaries, getEntries }) => {
 
     if (diaryName !== undefined) {
       createDiary(justName);
-      console.log(diaries);
       setJustName('');
       toggle();
     }
   }
   return (
-    <div className="sidebar">
-      <button className="diary-create-button" onClick={toggle}>
+    <div className={styles.sidebar}>
+      <div className={styles.logo}><img src={logo} alt="logo"/></div>  
+      <button className={styles.createDiary} onClick={toggle}>
         CREATE NEW DIARY
       </button>
       {modal ? (
-        <div className="pop-up">
-          <div className="form-box-for-user-b">
-            <div className="request">CHOOOSE NAME FOR YOUR DIARY</div>
-            <form className="diary-form" onSubmit={handleDiary}>
-              <textarea
+        <div className={styles.popup}>
+          <div className={styles.formbox}>
+            <div className={styles.request}>CHOOOSE NAME FOR YOUR DIARY</div>
+            <form className={styles.form} onSubmit={handleDiary}>
+              <input
                 placeholder="Name your diary"
                 value={justName}
                 onChange={handleName}
               />
+              <div className= {styles.buttons}>
               <button
-                className="smaller-redirect"
+                className={styles.redirect}
                 type="submit"
                 value="Submit"
                 onSubmit={handleDiary}
               >
                 Create new Diary
               </button>
-              <button className="smaller-redirect" onClick={toggle}>
+              <button className={styles.redirect} onClick={toggle}>
                 {' '}
                 CLOSE
               </button>
+              </div>
             </form>
           </div>
         </div>
       ) : null}
-      <div className="diaries">
+      <div className={styles.diaries}>
         {diaries.map((diary) => {
           return (
             <button
-              className="diary-button"
+              className={styles.diarybutton}
               key={diary._id}
               value={diary._id}
               onClick={handleDiaryButton}

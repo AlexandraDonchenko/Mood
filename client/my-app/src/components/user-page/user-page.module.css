@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
 .diaryName {
+  font-family: 'Montserrat', sans-serif;
   font-size: 30px;
+  margin-top: 2.5%;
+  text-align: center;
+}
+.diaryBox {
+  display: flex;
+  flex-direction: column;
+  
 }
 .diary-form {
   display: flex;
@@ -37,37 +48,49 @@ input {
   height: 100%;
   width: 100%;
 }
-.entry-box {
+.entrybox {
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   margin-top: 3%;
   display: flex;
   min-height: auto;
   height: 50px;
-  border: solid black 3px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.diary-entry-text {
+.diaryentry {
   padding: 2%;
   display: flex;
   width: 100%;
-  display: flex;
   height: 100%;
 }
 .date {
-  background-color: #026670;
-  color: #fce181;
-  min-width: auto;
-  width: 60px;
-  padding: 1%;
+  background-color: #021c70;
+  width: auto;
+  color:white;
+  font-family: 'Montserrat', sans-serif;
 }
 .texti {
   align-self: center;
 }
-.my-entries {
+.myentries {
   position: relative;
   top: 75px;
-  height: 400px;
+  height: 200px;
   overflow: scroll;
 }
 .my-entries::-webkit-scrollbar {
   display: none;
+}
+.button {
+  background-color: #021c70;
+  border:none;
+  border-radius: 50px;
+  padding:1%;
+  width: auto;
+  color:white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  position: absolute;
+  bottom: 50px;
 }
