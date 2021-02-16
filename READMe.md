@@ -6,11 +6,15 @@
 <li> create diaries </li>
 <li> create entries </li>
 <li> recieve sentiment analysis of their entries </li>
+
+
+<img src='https://github.com/AlexandraDonchenko/Mood/blob/main/Screen%20Shot%202021-02-16%20at%2014.58.38.png'>
   
 ### Tech stack 
 
 <li> React </li>
 <li> NestJs </li>
+<li> Node.js </li>
 <li> Mongoose </li>
 <li> Deep AI sentiment analysis </li> 
   
